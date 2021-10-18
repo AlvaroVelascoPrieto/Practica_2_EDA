@@ -11,7 +11,7 @@ public class DoubleLinkedList<T> implements ListADT<T> {
 
 	// Constructor
 	public DoubleLinkedList() {
-               last = null;
+		last = null;
 		descr = "";
 		count = 0;
 	}
@@ -28,20 +28,70 @@ public class DoubleLinkedList<T> implements ListADT<T> {
 	// Elimina el primer elemento de la lista
         // Precondici�n: 
 		// COMPLETAR EL CODIGO Y CALCULAR EL COSTE
+		T devolver;
+		if (last==null){
+			return null;
+		}
+		else if (last.next==last){
+			devolver = last.data;
+			last = null;
+		}
+		else{
+			devolver = last.next.data;
+			last.next.next.prev = last;
+			last.next = last.next.next;
+		}
 
+		return devolver;
 	}
 
 	public T removeLast() {
 	// Elimina el �ltimo elemento de la lista
         // Precondici�n: 
 			// COMPLETAR EL CODIGO Y CALCULAR EL COSTE
-
-		   }
+		T devolver;
+		if (last==null){
+			return null;
+		}
+		else if (last.next==last){
+			devolver = last.data;
+			last =null;
+		}
+		else{
+			devolver=last.data;
+			last.prev.next=last.next;
+			last.next.prev=last.prev;
+			last=last.prev;
+		}
+		return devolver;
+	}
 
 
 	public T remove(T elem) {
 	//Elimina un elemento concreto de la lista
 		// COMPLETAR EL CODIGO Y CALCULAR EL COSTE
+		//Coste n cuidado
+		Node<T> current;
+		if (last==null){
+			return null;
+		}
+		if (last.data==elem){
+			return this.removeLast();
+		}
+		else {
+			current = last.next;
+			while (last.data!=current.data){
+				if (current.data==elem){
+					current.next.prev=current.prev;
+					current.prev.next=current.next;
+					return current.data;
+				}
+				else{
+					current=current.next;
+				}
+			}
+		}
+		return current.data;
 	}
 
 	public T first() {
