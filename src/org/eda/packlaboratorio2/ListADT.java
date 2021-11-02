@@ -1,4 +1,4 @@
-package org.eda.packlaboratorio2.;
+package org.eda.packlaboratorio2;
 
 import java.util.Iterator;
 

@@ -1,4 +1,4 @@
-package org.eda.packlaboratorio2.;
+package org.eda.packlaboratorio2;
 
 public class Persona implements Comparable<Persona> {
 	

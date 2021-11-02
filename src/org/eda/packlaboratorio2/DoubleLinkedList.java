@@ -1,4 +1,4 @@
-package org.eda.packlaboratorio2.;
+package org.eda.packlaboratorio2;
 import java.util.Iterator;
 import java.util.NoSuchElementException;
 
@@ -41,7 +41,7 @@ public class DoubleLinkedList<T> implements ListADT<T> {
 			last.next.next.prev = last;
 			last.next = last.next.next;
 		}
-
+		this.count=this.count-1;
 		return devolver;
 	}
 
@@ -63,6 +63,7 @@ public class DoubleLinkedList<T> implements ListADT<T> {
 			last.next.prev=last.prev;
 			last=last.prev;
 		}
+		this.count=this.count-1;
 		return devolver;
 	}
 
@@ -91,63 +92,61 @@ public class DoubleLinkedList<T> implements ListADT<T> {
 				}
 			}
 		}
+		this.count=this.count-1;
 		return current.data;
 	}
 
 	public T first() {
 	//Da acceso al primer elemento de la lista
-	      if (isEmpty())
-	          return null;
-	      else return last.next.data;
+	      if (isEmpty()){
+	          return null;}
+	      else {return last.next.data;}
 	}
 
 	public T last() {
 	//Da acceso al �ltimo elemento de la lista
-	      if (isEmpty())
-	          return null;
-	      else return last.data;
+	      if (isEmpty()) {
+			  return null;
+		  }
+	      else {return last.data;}
 	}
 
 	public boolean contains(T elem) {
 	//Determina si la lista contiene un elemento concreto
-		      if (isEmpty())
-		          return false;
-			  else {
-				  Node<T> act = this.last;
-				  boolean enc = false;
-				  while (enc || act.prev==null) {
-					  if (act.data.equals(elem)) {
-						  enc=true;
-					  }
-					  act=act.prev;
-				  }
-			  }
-		      
-		   }
+		if (isEmpty())
+			return false;
+		else {
+			Node<T> act = this.last;
+			if (act.data.equals(elem)){
+				return true;
+			}
+			while (act.prev!=null) {
+				act=act.prev;
+				if (act.data.equals(elem)) {
+					return true;
+				}
+			}
+		}
+		return false;
+	}
 
 	public T find(T elem) {
 	//Determina si la lista contiene un elemento concreto, y develve su referencia, null en caso de que no est�
 		// COMPLETAR EL CODIGO Y CALCULAR EL COSTE
-		boolean enc = false;
-		Node<T> act = this.last;
-		if (isEmpty())
-			return false;
+		if (this.isEmpty())
+			return (null);
 		else {
-			while (enc || act.prev==null) {
+			Node<T> act = this.last;
+			while (!(act.prev==null)) {
 				if (act.data.equals(elem)) {
-					enc=true;
+					return act.data;
 				}
 				else{
 					act=act.prev;
 				}
 			}
 		}
-		if (enc) {
-			return (act.data)
-		}
-		else{
-			return (null);
-		}
+		return null;
 	}
 
 	public boolean isEmpty() 
@@ -165,7 +164,22 @@ public class DoubleLinkedList<T> implements ListADT<T> {
 	   private class ListIterator implements Iterator<T> { 
 
 		// COMPLETAR EL CODIGO Y CALCULAR EL COSTE
+			private Node<T> aux=last.next;
 
+
+		   @Override
+		   public boolean hasNext() {
+			   if (aux!=last){
+				   return true;
+			   }
+			   else {return false;}
+		   }
+
+		   public T next(){
+				T a = aux.data;
+				aux = aux.next;
+				return a;
+			}
 
 
 	   } // private class

@@ -6,7 +6,7 @@
  * @version 1.0, 08/13/08
  */
 
-package org.eda.packlaboratorio2.;
+package org.eda.packlaboratorio2;
 
 public interface IndexedListADT<T> extends ListADT<T>
 {
