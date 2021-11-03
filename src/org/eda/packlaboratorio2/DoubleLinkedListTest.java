@@ -7,57 +7,26 @@ import org.junit.Test;
 import static org.junit.Assert.*;
 
 public class DoubleLinkedListTest {
-
+    DoubleLinkedList<Integer> l1;
     @Before
     public void setUp() throws Exception {
+        l1=new DoubleLinkedList<Integer>();
     }
 
     @After
     public void tearDown() throws Exception {
+        l1=null;
     }
 
     @Test
     public void setDescr() {
+        l1.setDescr("AAA");
+        assertTrue(l1.getDescr().equals("AAA"));
     }
 
     @Test
     public void getDescr() {
-    }
-
-    @Test
-    public void removeFirst() {
-    }
-
-    @Test
-    public void removeLast() {
-    }
-
-    @Test
-    public void remove() {
-    }
-
-    @Test
-    public void first() {
-    }
-
-    @Test
-    public void last() {
-    }
-
-    @Test
-    public void contains() {
-    }
-
-    @Test
-    public void find() {
-    }
-
-    @Test
-    public void isEmpty() {
-    }
-
-    @Test
-    public void size() {
-
+        l1.setDescr("AAA");
+        assertTrue(l1.getDescr().equals("AAA"));
     }
 }
