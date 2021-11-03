@@ -61,11 +61,9 @@ public class UnorderedDoubleLinkedList<T> extends DoubleLinkedList<T> implements
 					}
 					aux=aux.next;
 				}
+				this.count=this.count +1;
 			}
-			this.count=this.count +1;
-
 		}
-
 	}
 
 }
