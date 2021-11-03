@@ -92,7 +92,7 @@ public class DoubleLinkedList<T> implements ListADT<T> {
 			}
 		}
 		this.count=this.count-1;
-		return current.data;
+		return null;
 	}
 
 	public T first() {
