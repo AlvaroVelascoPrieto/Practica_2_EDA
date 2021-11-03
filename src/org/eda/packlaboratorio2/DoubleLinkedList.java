@@ -136,13 +136,11 @@ public class DoubleLinkedList<T> implements ListADT<T> {
 			return (null);
 		else {
 			Node<T> act = this.last;
-			while (!(act.prev==null)) {
+			while (act.prev!=last) {
 				if (act.data.equals(elem)) {
 					return act.data;
 				}
-				else{
-					act=act.prev;
-				}
+				act=act.prev;
 			}
 		}
 		return null;
